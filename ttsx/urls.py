@@ -14,13 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
-# from django.contrib import admin
 
 from myApp import views
+from django.contrib.staticfiles.urls import static
+
+from ttsx import settings
 
 urlpatterns = [
     # url(r'^admin/', admin.site.urls),
     url(r'^ttsx/', include('myApp.urls', namespace='ttsx')),
     url(r'^user/', include('user.urls', namespace='user')),
-    url(r'', views.index)
+    url(r'myAdmin/', include('myAdmin.urls', namespace='admin')),
+    url(r'^$', views.index)
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

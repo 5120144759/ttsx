@@ -26,7 +26,7 @@ class Goods(models.Model):
     childcategory = models.ForeignKey(ChildCategory, on_delete=models.CASCADE)  # 子分类
     specifics = models.CharField(max_length=100)  # 规格
     introducte = models.CharField(max_length=255)  # 简介
-    Popularity = models.IntegerField(default=0)  # 人气
+    Popularity = models.BooleanField(default=0)  # 人气
 
     class Meta():
         db_table = 'ttsx_goods'

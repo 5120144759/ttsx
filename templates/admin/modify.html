@@ -13,7 +13,8 @@
                         {% csrf_token %}
                         <li>
                             <span class="item_name" style="width:120px;">商品名称：</span>
-                            <input type="text" class="textbox textbox_295" placeholder="商品名称..." name="name"/>
+                            <input type="text" class="textbox textbox_295" placeholder="商品名称..." name="name"
+                                   value="{{ goods.name }}"/>
                         </li>
                         <li>
                             <span class="item_name" style="width:120px;">商品价格：</span>
@@ -26,7 +27,11 @@
                         <li>
                             <span class="item_name" style="width:120px;">品牌：</span>
                             <select class="select" name="category">
-                                <option>选择产品分类</option>
+                                {% if goods %}
+                                    <option>{{ goods.category.name }}</option>
+                                {% else %}
+                                    <option>选择产品分类</option>
+                                {% endif %}
                                 {% for category in c_list %}
                                     <option value="{{ category.name }}">{{ category.name }}</option>
                                 {% endfor %}
@@ -35,7 +40,11 @@
                         <li>
                             <span class="item_name" style="width:120px;">分类：</span>
                             <select class="select" name="childcategory">
-                                <option>选择产品子分类</option>
+                                {% if goods %}
+                                    <option>{{ goods.childcategory.name }}</option>
+                                {% else %}
+                                    <option>选择产品分类</option>
+                                {% endif %}
                                 {% for childcategory in cc_list %}
                                     <option value="{{ childcategory.name }}">{{ childcategory.name }}</option>
                                 {% endfor %}
@@ -51,7 +60,6 @@
                         <li>
                             <span class="item_name" style="width:120px;">上传图片：</span>
                             <input type="file" name="icon"/>
-
                         </li>
                         <li>
                             <span class="item_name" style="width:120px;">简介：</span>
