@@ -35,20 +35,24 @@
                         {% endif %}
                         <td class="center">
                             <a href="{% url 'admin:modify' %}?goods_id={{ goods.id }}" title="编辑" class="link_icon">&#101;</a>
-                            <a href="#" title="删除" class="link_icon">&#100;</a>
+                            <a href="{% url 'admin:delete' %}?goods_id={{ goods.id }}" title="删除" class="link_icon">&#100;</a>
                         </td>
                     </tr>
                 {% endfor %}
 
             </table>
             <aside class="paging">
-                <a>第一页</a>
-                <a>1</a>
-                <a>2</a>
-                <a>3</a>
-                <a>…</a>
-                <a>1004</a>
-                <a>最后一页</a>
+                <a href="{% url 'admin:index' %}">首页</a>
+                {% if goods_list.has_previous %}
+                    <a href="{% url 'admin:index' %}?page_num={{ goods_list.previous_page_number }}">上一页</a>
+                {% endif %}
+                {% for i in goods_list.paginator.page_range %}
+                    <a href="{% url 'admin:index' %}?page_num={{ i }}">{{ i }}</a>
+                {% endfor %}
+                {% if goods_list.has_next %}
+                    <a href="{% url 'admin:index' %}?page_num={{ goods_list.next_page_number }}">下一页</a>
+                {% endif %}
+                <a href="{% url 'admin:index' %}?page_num={{ goods_list.paginator.num_pages }}">尾页</a>
             </aside>
         </div>
     </section>

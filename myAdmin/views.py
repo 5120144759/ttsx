@@ -1,12 +1,13 @@
 import datetime
 
 from django.contrib.auth.hashers import check_password
+from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
 
 from user.models import User, UserTicket
-from myApp.models import ChildCategory, Category, Goods
+from myApp.models import Category, Goods
 from utils.func import get_ticket, wapper
 
 
@@ -14,7 +15,10 @@ from utils.func import get_ticket, wapper
 def index(request):
     if request.method == 'GET':
         goods_list = Goods.objects.all()
-        return render(request, 'admin/product_list.html', {'goods_list': goods_list})
+        num = request.GET.get('page_num', 1)
+        paginator = Paginator(goods_list, 4)
+        page = paginator.page(num)
+        return render(request, 'admin/product_list.html', {'goods_list': page})
 
 
 def login(request):
@@ -42,24 +46,21 @@ def login(request):
 def product_detail(request):
     if request.method=='GET':
         c_list = Category.objects.all()
-        cc_list = ChildCategory.objects.all()
-        ctx = {'c_list': c_list, 'cc_list': cc_list}
+        ctx = {'c_list': c_list}
         return render(request, 'admin/product_detail.html', ctx)
     if request.method == 'POST':
         name = request.POST.get('name')
         price = request.POST.get('price')
         category = request.POST.get('category')
         category_id = Category.objects.get(name=category).id
-        childcategory = request.POST.get('childcategory')
-        childcategory_id = ChildCategory.objects.get(name=childcategory).id
         popular = request.POST.get('popular')
         icon = request.FILES.get('icon')
         intro = request.POST.get('intro')
         specifics = request.POST.get('specifics')
-        if not all([name, price, category_id, childcategory, popular, icon, intro, specifics]):
+        if not all([name, price, category_id, popular, icon, intro, specifics]):
             return render(request, 'admin/product_detail.html')
         Goods.objects.create(name=name, price=price, category_id=category_id,
-                             childcategory_id=childcategory_id, Popularity=popular,
+                             Popularity=popular,
                              icon=icon, introducte=intro, specifics=specifics)
         return HttpResponseRedirect(reverse('admin:index'))
 
@@ -70,9 +71,54 @@ def modify(request):
         goods_id = request.GET.get('goods_id')
         goods = Goods.objects.get(pk=goods_id)
         c_list = Category.objects.all()
-        cc_list = ChildCategory.objects.all()
-        ctx = {'c_list': c_list, 'cc_list': cc_list, 'goods': goods}
-        return render(request, 'admin/modify.html', ctx)
+        ctx = {'c_list': c_list, 'goods': goods}
+        return render(request, 'admin/product_detail.html', ctx)
 
     if request.method == 'POST':
-        pass
+        goods_id = request.GET.get('goods_id')
+        goods = Goods.objects.get(pk=goods_id)
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        category = request.POST.get('category')
+        category_id = Category.objects.get(name=category).id
+        popular = request.POST.get('popular')
+        icon = request.FILES.get('icon')
+        intro = request.POST.get('intro')
+        specifics = request.POST.get('specifics')
+        if icon:
+            goods.name = name
+            goods.price = price
+            goods.category_id = category_id
+            goods.Popularity = popular
+            goods.icon = icon
+            goods.introducte = intro
+            goods.specifics = specifics
+            goods.save()
+            return HttpResponseRedirect(reverse('admin:index'))
+        goods.name = name
+        goods.price = price
+        goods.category_id = category_id
+        goods.Popularity = popular
+        goods.introducte = intro
+        goods.specifics = specifics
+        goods.save()
+        return HttpResponseRedirect(reverse('admin:index'))
+
+@wapper
+def delete(request):
+    if request.method == 'GET':
+        goods_id = request.GET.get('goods_id')
+        goods = Goods.objects.get(pk=goods_id)
+        goods.delete()
+        goods_list = Goods.objects.all()
+        return render(request, 'admin/product_list.html', {'goods_list': goods_list})
+
+@wapper
+def addCategoty(request):
+    if request.method == 'GET':
+        return render(request, 'admin/add_category.html')
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        icon = request.FILES.get('icon')
+        Category.objects.create(name=name, icon=icon)
+        return HttpResponseRedirect(reverse('admin:addcategory'))

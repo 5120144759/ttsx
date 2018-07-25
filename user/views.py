@@ -28,6 +28,7 @@ def register(request):
         data = {'msg': '两次输入的密码不同'}
         return render(request, 'user/register.html', data)
 
+
 def login(request):
     if request.method == 'GET':
         return render(request, 'user/login.html')
@@ -36,7 +37,7 @@ def login(request):
         username = request.POST.get('username')
         pwd = request.POST.get('pwd')
         user = User.objects.filter(username=username).first()
-        if user and  check_password(pwd, user.password):
+        if user and check_password(pwd, user.password):
             ticket = get_ticket()
             out_time = datetime.datetime.now() + datetime.timedelta(days=1)
             UserTicket.objects.create(ticket=ticket, user=user, out_time=out_time)
@@ -44,3 +45,9 @@ def login(request):
             res.set_cookie('ticket', ticket, expires=out_time)
             return res
 
+
+def logout(request):
+    if request.method == 'GET':
+        res = HttpResponseRedirect(reverse('user:login'))
+        res.delete_cookie('ticket')
+        return res

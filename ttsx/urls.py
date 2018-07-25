@@ -25,6 +25,6 @@ urlpatterns = [
     url(r'^ttsx/', include('myApp.urls', namespace='ttsx')),
     url(r'^user/', include('user.urls', namespace='user')),
     url(r'myAdmin/', include('myAdmin.urls', namespace='admin')),
-    url(r'^$', views.index)
+    url(r'^$', views.home)
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

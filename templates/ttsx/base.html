@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    {% block title %}{% endblock %}
+    <link rel="stylesheet" type="text/css" href="{% static '/user/css/reset.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/user/css/main.css' %}">
+    <script type="text/javascript" src="{% static '/user/js/jquery-1.12.4.min.js' %}"></script>
+    <script type="text/javascript" src="{% static '/user/js/jquery-ui.min.js' %}"></script>
+    <script type="text/javascript" src="{% static '/user/js/slide.js' %}"></script>
+</head>
+<body>
+<div class="header_con">
+    <div class="header">
+        <div class="welcome fl">欢迎来到天天生鲜!</div>
+        <div class="fr">
+            <div class="login_btn fl">
+                {% if request.user.username %}
+                    <a href="#">欢迎：{{ request.user.username }}</a>
+                    <span>|</span>
+                    <a href="{% url 'user:logout' %}">注销</a>
+                {% else %}
+                    <a href="{% url 'user:login' %}">登录</a>
+                    <span>|</span>
+                    <a href="{% url 'user:register' %}">注册</a>
+                {% endif %}
+            </div>
+            <div class="user_link fl">
+                <span>|</span>
+                <a href="user_center_info.html">用户中心</a>
+                <span>|</span>
+                <a href="cart.html">我的购物车</a>
+                <span>|</span>
+                <a href="user_center_order.html">我的订单</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search_bar clearfix">
+    <a href="/" class="logo fl"><img src="/static/user/images/logo.png"></a>
+    <div class="search_con fl">
+        <input type="text" class="input_text fl" name="" placeholder="搜索商品">
+        <input type="button" class="input_btn fr" name="" value="搜索">
+    </div>
+    <div class="guest_cart fr">
+        <a href="#" class="cart_name fl">我的购物车</a>
+        <div class="goods_count fl" id="show_count">1</div>
+    </div>
+</div>
+
+{% block choice %}
+    <div class="navbar_con">
+        <div class="navbar">
+            <h1 class="fl">全部商品分类</h1>
+            <ul class="navlist fl">
+                <li><a href="">首页</a></li>
+                <li class="interval">|</li>
+                <li><a href="">手机生鲜</a></li>
+                <li class="interval">|</li>
+                <li><a href="">抽奖</a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+<div class="footer">
+    <div class="foot_link">
+        <a href="#">关于我们</a>
+        <span>|</span>
+        <a href="#">联系我们</a>
+        <span>|</span>
+        <a href="#">招聘人才</a>
+        <span>|</span>
+        <a href="#">友情链接</a>
+    </div>
+    <p>CopyRight © 2016 北京天天生鲜信息技术有限公司 All Rights Reserved</p>
+    <p>电话：010-****888 京ICP备*******8号</p>
+</div>
+</body>
+</html>
