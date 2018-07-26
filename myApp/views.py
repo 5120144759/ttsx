@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
 from myApp.models import Goods, Category, MainWheel, MainNav
+from user.models import UserAddress
 
 
 def home(request):
@@ -24,6 +25,7 @@ def index(request):
     ctx = {'goods_list': goods_list, 'c_list': c_list, 'w_list': w_list, 'm_list': m_list}
     return render(request, 'ttsx/index.html', ctx)
 
+
 def show(request):
     if request.method == 'GET':
         cid = request.GET.get('cid')
@@ -32,9 +34,12 @@ def show(request):
             'sid': '0'
         }))
 
+
 def more(request, cid, sid):
     if request.method == 'GET':
         goods_list = Goods.objects.filter(category_id=cid)
+        if cid == '0':
+            goods_list = Goods.objects.all().order_by('-Popularity')
 
         c_list = Category.objects.all()
         if sid == '0':
@@ -46,5 +51,14 @@ def more(request, cid, sid):
         num = request.GET.get('page_num', 1)
         paginator = Paginator(goods_list, 20)
         page = paginator.page(num)
-        ctx = {'goods_list': page, 'c_list': c_list, 'cid': cid}
+        ctx = {'goods_list': page, 'c_list': c_list, 'cid': int(cid)}
         return render(request, 'ttsx/list.html', ctx)
+
+
+def detail(request, gid, cid):
+    if request.method == 'GET':
+        goods = Goods.objects.get(pk=gid)
+        goods_list = Goods.objects.filter(category_id=cid)
+        c_list = Category.objects.all()
+        ctx = {'goods': goods, 'c_list': c_list, 'cid': int(cid), 'goods_list': goods_list}
+        return render(request, 'ttsx/detail.html', ctx)

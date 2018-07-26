@@ -10,14 +10,20 @@ from user.models import User, UserTicket
 
 class UserMiddleware(MiddlewareMixin):
     def process_request(self, request):
-        paths = [r'^/user/login/$', r'^/user/register/$', r'^/$', r'^/myAdmin/login/$']
+        paths = [r'^/user/login/$', r'^/user/register/$', r'^/ttsx/index/$', r'^/myAdmin/login/$']
 
         for path in paths:
             if re.match(path, request.path):
+                ticket = request.COOKIES.get('ticket')
+                if ticket:
+                    user = UserTicket.objects.filter(ticket=ticket).first()
+                    if user:
+                        u = User.objects.filter(id=user.user_id).first()
+                        request.user = u
                 return None
         ticket = request.COOKIES.get('ticket')
         if ticket:
-            user = UserTicket.objects.filter().first()
+            user = UserTicket.objects.filter(ticket=ticket).first()
             if user:
                 if user.out_time.replace(tzinfo=None) < datetime.datetime.now():
                     user.delete()

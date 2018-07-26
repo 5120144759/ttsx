@@ -50,7 +50,7 @@
                         {% if goods.category.id == category.id %}
                             <li>
                                 <h4><a href="#">{{ goods.name }}</a></h4>
-                                <a href="#"><img src="/media/{{ goods.icon }}">{{ forloop.counter }}</a>
+                                <a href="{% url 'ttsx:detail' goods.category_id goods.id %}"><img src="/media/{{ goods.icon }}"></a>
                                 <div class="prize">¥ {{ goods.price }}</div>
                             </li>
                         {% endif %}

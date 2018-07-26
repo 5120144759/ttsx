@@ -29,7 +29,7 @@ class User(models.Model):
 class UserAddress(models.Model):
     tel = models.CharField(max_length=50, verbose_name='电话', unique=True)
     address = models.CharField(max_length=255, verbose_name='地址')
-    zcpde = models.CharField(max_length=20, verbose_name='邮编')
+    zcpde = models.CharField(max_length=20, verbose_name='姓名')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta():

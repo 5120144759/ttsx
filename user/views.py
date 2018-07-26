@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
 
-from user.models import User, UserTicket
+from user.models import User, UserTicket, UserAddress
 from utils.func import get_ticket
 
 
@@ -51,3 +51,32 @@ def logout(request):
         res = HttpResponseRedirect(reverse('user:login'))
         res.delete_cookie('ticket')
         return res
+
+def mine(request):
+    if request.method == 'GET':
+        user = request.user
+        ctx = {'user': user}
+        return render(request, 'ttsx/user_center_info.html', ctx)
+
+
+def address(request):
+    if request.method == 'GET':
+        user = request.user
+        add = UserAddress.objects.get(user=user)
+        ctx = {'add': add}
+        return render(request, 'ttsx/user_center_site.html', ctx)
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        addr = request.POST.get('address')
+        tel = request.POST.get('tel')
+        if not all([name, addr, tel]):
+            user = request.user
+            add = UserAddress.objects.get(user=user)
+            ctx = {'add': add, 'msg': '请填写所有字段'}
+            return render(request, 'ttsx/user_center_site.html', ctx)
+        user_addr = UserAddress.objects.filter(user=request.user).first()
+        user_addr.zcpde = name
+        user_addr.addr = addr
+        user_addr.tel = tel
+        user_addr.save()
+        return HttpResponseRedirect(reverse('user:mine'))
