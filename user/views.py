@@ -52,6 +52,7 @@ def logout(request):
         res.delete_cookie('ticket')
         return res
 
+
 def mine(request):
     if request.method == 'GET':
         user = request.user

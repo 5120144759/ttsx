@@ -1,7 +1,9 @@
 {% extends 'ttsx/base.html' %}
+{% load staticfiles %}
 
 {% block title %}
     <title>天天鲜生-商品列表</title>
+    <script src="{% static '/user/cart_js/function.js' %}" type="text/javascript"></script>
 {% endblock %}
 
 {% block choice %}
@@ -46,7 +48,8 @@
                     {% for goods in goods_list %}
                         {% if goods.Popularity == 1 and cid != 0 %}
                             <li>
-                                <a href="{% url 'ttsx:detail' goods.category_id goods.id %}"><img src="/media/{{ goods.icon }}"></a>
+                                <a href="{% url 'ttsx:detail' goods.category_id goods.id %}"><img
+                                        src="/media/{{ goods.icon }}"></a>
                                 <h4><a href="{% url 'ttsx:detail' goods.category_id goods.id %}">{{ goods.name }}</a>
                                 </h4>
                                 <div class="prize">￥{{ goods.price }}</div>
@@ -54,7 +57,8 @@
                         {% elif goods.Popularity == 1 and cid == 0 %}
                             {% if forloop.counter < 5 %}
                                 <li>
-                                    <a href="{% url 'ttsx:detail' goods.category_id goods.id %}"><img src="/media/{{ goods.icon }}"></a>
+                                    <a href="{% url 'ttsx:detail' goods.category_id goods.id %}"><img
+                                            src="/media/{{ goods.icon }}"></a>
                                     <h4>
                                         <a href="{% url 'ttsx:detail' goods.category_id goods.id %}">{{ goods.name }}</a>
                                     </h4>
@@ -75,6 +79,7 @@
             </div>
 
             <ul class="goods_type_list clearfix">
+                {% csrf_token %}
                 {% for goods in goods_list %}
                     <li>
                         <a href="{% url 'ttsx:detail' goods.category_id goods.id %}"><img src="/media/{{ goods.icon }}"></a>
@@ -82,7 +87,8 @@
                         <div class="operate">
                             <span class="prize">￥{{ goods.price }}</span>
                             <span class="unit">{{ goods.price }}/{{ goods.specifics }}</span>
-                            <a href="#" class="add_goods" title="加入购物车"></a>
+                            <a href="javascript: add_cart({{ goods.id }})" class="add_goods" title="加入购物车"
+                               id="{{ goods.id }}"></a>
                         </div>
                     </li>
                 {% endfor %}

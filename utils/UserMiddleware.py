@@ -10,7 +10,8 @@ from user.models import User, UserTicket
 
 class UserMiddleware(MiddlewareMixin):
     def process_request(self, request):
-        paths = [r'^/user/login/$', r'^/user/register/$', r'^/ttsx/index/$', r'^/myAdmin/login/$']
+        paths = [r'^/user/login/$', r'^/user/register/$', r'^/ttsx/index/$', r'^/myAdmin/login/$',
+                 r'^/ttsx/more/\d+/\d+/$', r'^/ttsx/detail/\d+/\d+$']
 
         for path in paths:
             if re.match(path, request.path):

@@ -42,9 +42,10 @@ def login(request):
             res.set_cookie('ticket', ticket, expires=out_time)
             return res
 
+
 @wapper
 def product_detail(request):
-    if request.method=='GET':
+    if request.method == 'GET':
         c_list = Category.objects.all()
         ctx = {'c_list': c_list}
         return render(request, 'admin/product_detail.html', ctx)
@@ -104,6 +105,7 @@ def modify(request):
         goods.save()
         return HttpResponseRedirect(reverse('admin:index'))
 
+
 @wapper
 def delete(request):
     if request.method == 'GET':
@@ -112,6 +114,7 @@ def delete(request):
         goods.delete()
         goods_list = Goods.objects.all()
         return render(request, 'admin/product_list.html', {'goods_list': goods_list})
+
 
 @wapper
 def addCategoty(request):

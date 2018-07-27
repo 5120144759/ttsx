@@ -60,3 +60,13 @@ class OrderGoodsModel(models.Model):
 
     class Meta:
         db_table = 'ttsx_order_goods'
+
+
+class Cart(models.Model):
+    user = models.ForeignKey(User)  # 关联用户
+    goods = models.ForeignKey(Goods)  # 关联商品
+    c_num = models.IntegerField(default=1)  # 商品的个数
+    is_select = models.BooleanField(default=True)  # 是否选择商品
+
+    class Meta:
+        db_table = 'ttsx_cart'

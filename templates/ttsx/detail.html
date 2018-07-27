@@ -3,6 +3,7 @@
 
 {% block title %}
     <title>天天生鲜-商品详情</title>
+    <script type="text/javascript" src="{% static '/user/detail_js/function.js' %}"></script>
 {% endblock %}
 
 {% block choice %}
@@ -41,31 +42,33 @@
             {% endif %}
         {% endfor %}
         <span>></span>
-        <a href="#">商品详情</a>
+        <a href="#">{{ goods.name }}</a>
     </div>
 
     <div class="goods_detail_con clearfix">
+        {% csrf_token %}
         <div class="goods_detail_pic fl"><img src="/media/{{ goods.icon }}" style="height: 350px; width: 350px"></div>
 
         <div class="goods_detail_list fr">
             <h3>{{ goods.name }}</h3>
             <p>{{ goods.introducte }}</p>
             <div class="prize_bar">
-                <span class="show_pirze">¥<em>{{ goods.price }}</em></span>
+                <span class="show_pirze" id="price">¥<em>{{ goods.price }}</em></span>
                 <span class="show_unit">单  位：{{ goods.specifics }}</span>
             </div>
             <div class="goods_num clearfix">
                 <div class="num_name fl">数 量：</div>
                 <div class="num_add fl">
-                    <input type="text" class="num_show fl" value="1">
-                    <a href="javascript:;" class="add fr">+</a>
-                    <a href="javascript:;" class="minus fr">-</a>
+                    <input type="text" class="num_show fl" value="1"
+                           onkeyup="this.value=this.value.replace(/[^\d]/g,'')"  id="num">
+                    <a href="javascript:add_num();" class="add fr">+</a>
+                    <a href="javascript:sub_num();" class="minus fr">-</a>
                 </div>
             </div>
-            <div class="total">总价：<em>16.80元</em></div>
+            <div class="total" id="total">总价：<em>{{ goods.price }}元</em></div>
             <div class="operate_btn">
                 <a href="javascript:;" class="buy_btn">立即购买</a>
-                <a href="javascript:;" class="add_cart" id="add_cart">加入购物车</a>
+                <a href="javascript:detail_add_cart({{ goods.id }});" class="add_cart" id="add_cart">加入购物车</a>
             </div>
         </div>
     </div>
