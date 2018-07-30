@@ -2,21 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="57f76b27-405f-4e93-a83e-98df66cf9736" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/static/user/cart_js/function.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/user/detail_js/function.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myAdmin/templatetags/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myAdmin/templatetags/myTags.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myAdmin/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myAdmin/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myApp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/myApp/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/myApp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myApp/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/user/cart_js/function.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/user/cart_js/function.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/ttsx/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ttsx/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ttsx/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ttsx/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ttsx/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ttsx/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ttsx/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ttsx/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ttsx/user_center_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ttsx/user_center_info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ttsx/user_center_site.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ttsx/user_center_site.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/UserMiddleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/UserMiddleware.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/ttsx/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ttsx/cart.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,8 +26,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myApp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3892">
-              <caret line="139" column="36" lean-forward="true" selection-start-line="139" selection-start-column="36" selection-end-line="139" selection-end-column="36" />
+            <state relative-caret-position="232">
+              <caret line="188" column="21" lean-forward="true" selection-start-line="188" selection-start-column="21" selection-end-line="188" selection-end-column="21" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -42,44 +35,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myAdmin/views.py">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/myApp/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="127" lean-forward="true" selection-start-line="127" selection-end-line="127" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="316">
+              <caret line="26" column="56" lean-forward="true" selection-start-line="26" selection-start-column="56" selection-end-line="26" selection-end-column="56" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/user/views.py">
+      <file leaf-file-name="cart.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/ttsx/cart.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="196">
+              <caret line="52" column="71" selection-start-line="52" selection-start-column="71" selection-end-line="52" selection-end-column="71" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="function.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/user/detail_js/function.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="40" column="30" lean-forward="true" selection-start-line="40" selection-start-column="30" selection-end-line="40" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="function.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="function.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/user/cart_js/function.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="4" column="21" lean-forward="true" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+            <state relative-caret-position="232">
+              <caret line="86" column="13" lean-forward="true" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -87,41 +65,17 @@
       <file leaf-file-name="detail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/ttsx/detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="44" column="33" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="33" />
+            <state relative-caret-position="87">
+              <caret line="71" column="18" lean-forward="true" selection-start-line="71" selection-start-column="18" selection-end-line="71" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myApp/urls.py">
+        <entry file="file://$PROJECT_DIR$/myAdmin/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="12" column="14" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="45" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserMiddleware.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/utils/UserMiddleware.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/ttsx/base.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="41" column="31" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
+            <state relative-caret-position="280">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
             </state>
           </provider>
         </entry>
@@ -131,9 +85,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -181,18 +135,22 @@
         <option value="$PROJECT_DIR$/user/urls.py" />
         <option value="$PROJECT_DIR$/myApp/models.py" />
         <option value="$PROJECT_DIR$/templates/ttsx/list.html" />
-        <option value="$PROJECT_DIR$/static/user/cart_js/function.js" />
         <option value="$PROJECT_DIR$/templates/ttsx/index.html" />
         <option value="$PROJECT_DIR$/templates/ttsx/user_center_info.html" />
         <option value="$PROJECT_DIR$/templates/ttsx/user_center_site.html" />
-        <option value="$PROJECT_DIR$/myApp/urls.py" />
         <option value="$PROJECT_DIR$/static/user/detail_js/function.js" />
         <option value="$PROJECT_DIR$/templates/ttsx/detail.html" />
-        <option value="$PROJECT_DIR$/myApp/views.py" />
         <option value="$PROJECT_DIR$/myAdmin/views.py" />
         <option value="$PROJECT_DIR$/user/views.py" />
-        <option value="$PROJECT_DIR$/templates/ttsx/base.html" />
         <option value="$PROJECT_DIR$/utils/UserMiddleware.py" />
+        <option value="$PROJECT_DIR$/templates/ttsx/base.html" />
+        <option value="$PROJECT_DIR$/myAdmin/myTags.py" />
+        <option value="$PROJECT_DIR$/myAdmin/templatetags/__init__.py" />
+        <option value="$PROJECT_DIR$/myAdmin/templatetags/myTags.py" />
+        <option value="$PROJECT_DIR$/templates/ttsx/cart.html" />
+        <option value="$PROJECT_DIR$/myApp/views.py" />
+        <option value="$PROJECT_DIR$/myApp/urls.py" />
+        <option value="$PROJECT_DIR$/static/user/cart_js/function.js" />
       </list>
     </option>
   </component>
@@ -206,10 +164,9 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="1615" />
-    <option name="height" value="915" />
+    <option name="x" value="-20" />
+    <option name="width" value="980" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -230,11 +187,6 @@
             <path>
               <item name="ttsx" type="b2602c69:ProjectViewProjectNode" />
               <item name="ttsx" type="462c0819:PsiDirectoryNode" />
-              <item name="myAdmin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ttsx" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ttsx" type="462c0819:PsiDirectoryNode" />
               <item name="myApp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -247,6 +199,20 @@
               <item name="ttsx" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ttsx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ttsx" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="cart_js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ttsx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ttsx" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="detail_js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ttsx" type="b2602c69:ProjectViewProjectNode" />
@@ -289,15 +255,16 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\python_workspace\code\Django\ttsx\myAdmin\templatetags" />
+      <recent name="E:\python_workspace\code\Django\ttsx\static\admin" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\python_workspace\code\Django\ttsx\static\user" />
       <recent name="E:\python_workspace\code\Django\ttsx\static" />
       <recent name="E:\python_workspace\code\Django\ttsx\templates\user" />
       <recent name="E:\python_workspace\code\Django\ttsx\static\js" />
       <recent name="E:\python_workspace\code\Django\ttsx\static\images" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\python_workspace\code\Django\ttsx\static\admin" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -361,13 +328,13 @@
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32952926" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3281027" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32952926" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18900804" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16554959" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39800286" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.39800286" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -402,18 +369,10 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="47" />
+      <option name="time" value="57" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/admin/user_rank.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="37" column="13" lean-forward="true" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/user.py" />
     <entry file="file://$PROJECT_DIR$/static/user/css/main.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -471,9 +430,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
           <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -527,16 +483,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myAdmin/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin/order_list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -575,9 +521,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myApp/tests.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/user/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -589,9 +532,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="284">
           <caret line="28" column="1" lean-forward="true" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
-          <folding>
-            <element signature="e#638#679#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -599,9 +539,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -629,18 +566,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/ttsx/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/ttsx/cart.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-168" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/ttsx/user_center_info.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="28">
@@ -652,9 +577,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
           <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#1710#1728#0#HTML" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -665,47 +587,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../env/djvenv/Lib/site-packages/django/core/handlers/base.py">
+    <entry file="file://$PROJECT_DIR$/utils/UserMiddleware.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="186" selection-start-line="186" selection-end-line="186" />
+        <state relative-caret-position="448">
+          <caret line="16" column="44" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/user/cart_js/function.js">
+    <entry file="file://$PROJECT_DIR$/user/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="4" column="21" lean-forward="true" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+        <state relative-caret-position="652">
+          <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/user/detail_js/function.js">
+    <entry file="file://$PROJECT_DIR$/templates/ttsx/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="40" column="30" lean-forward="true" selection-start-line="40" selection-start-column="30" selection-end-line="40" selection-end-column="30" />
+        <state relative-caret-position="-224">
+          <caret line="28" column="10" lean-forward="true" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/ttsx/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="44" column="33" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="33" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/myApp/tests.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/myApp/views.py">
+    <entry file="file://$PROJECT_DIR$/templates/ttsx/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3892">
-          <caret line="139" column="36" lean-forward="true" selection-start-line="139" selection-start-column="36" selection-end-line="139" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="119">
+          <caret line="32" column="30" lean-forward="true" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myAdmin/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
+        <state relative-caret-position="204">
           <caret line="127" lean-forward="true" selection-start-line="127" selection-end-line="127" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
@@ -713,40 +628,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/ttsx/base.html">
+    <entry file="file://$PROJECT_DIR$/myAdmin/templatetags/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myAdmin/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="41" column="31" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
+        <state relative-caret-position="280">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/user/detail_js/function.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="43" column="1" lean-forward="true" selection-start-line="43" selection-start-column="1" selection-end-line="43" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../env/djvenv/Lib/site-packages/django/core/handlers/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="180" lean-forward="true" selection-start-line="180" selection-end-line="180" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myAdmin/templatetags/myTags.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ttsx/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="71" column="18" lean-forward="true" selection-start-line="71" selection-start-column="18" selection-end-line="71" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myApp/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="12" column="14" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="45" />
+        <state relative-caret-position="316">
+          <caret line="26" column="56" lean-forward="true" selection-start-line="26" selection-start-column="56" selection-end-line="26" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myApp/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="188" column="21" lean-forward="true" selection-start-line="188" selection-start-column="21" selection-end-line="188" selection-end-column="21" />
           <folding>
-            <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#0#43#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user/views.py">
+    <entry file="file://$PROJECT_DIR$/templates/ttsx/cart.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="196">
+          <caret line="52" column="71" selection-start-line="52" selection-start-column="71" selection-end-line="52" selection-end-column="71" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils/UserMiddleware.py">
+    <entry file="file://$PROJECT_DIR$/static/user/cart_js/function.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="232">
+          <caret line="86" column="13" lean-forward="true" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="13" />
         </state>
       </provider>
     </entry>

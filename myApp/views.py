@@ -138,3 +138,54 @@ def detailAddCart(request):
                     sum += c.c_num
                 ctx['sum'] = sum
             return JsonResponse(ctx)
+
+
+def cart(request):
+    if request.method == 'GET':
+        user = request.user
+        carts_list = Cart.objects.filter(user=user)
+        return render(request, 'ttsx/cart.html', {'carts_list': carts_list})
+
+def addGoods(request):
+    if request.method == 'POST':
+        ctx = {
+            'code': 200,
+            'msg': '添加成功'
+        }
+        id = request.POST.get('cart_id')
+        cart = Cart.objects.get(pk=id)
+        cart.c_num += 1
+        cart.save()
+        ctx['c_num'] = cart.c_num
+        ctx['price'] = cart.goods.price
+        return JsonResponse(ctx)
+
+
+def subGoods(request):
+    ctx = {
+        'code': 200,
+        'msg': '减少成功'
+    }
+    id = request.POST.get('cart_id')
+    cart = Cart.objects.get(pk=id)
+    if cart.c_num == 1:
+        cart.delete()
+        ctx['code'] = 201
+        return JsonResponse(ctx)
+    cart.c_num -= 1
+    cart.save()
+    ctx['c_num'] = cart.c_num
+    ctx['price'] = cart.goods.price
+    return JsonResponse(ctx)
+
+def delCart(request):
+    if request.method == 'POST':
+        ctx = {
+            'code': 200,
+            'msg': '删除成功'
+        }
+        id = request.POST.get('cart_id')
+        cart = Cart.objects.get(pk=id)
+        cart.delete()
+        return JsonResponse(ctx)
+

@@ -17,4 +17,12 @@ urlpatterns = [
     url(r'^cart_num/$', views.cartNum, name='cart_num'),
     # 详情页面添加购物车
     url(r'^detail_add_cart/$', views.detailAddCart, name='detail_add_cart'),
+    # 购物车
+    url(r'^cart/$', views.cart, name='cart'),
+    # 购物车添加按钮
+    url(r'^add_goods/$', views.addGoods, name='add_goods'),
+    # 购物车减少按钮
+    url(r'^sub_goods/$', views.subGoods, name='sub_goods'),
+    # 删除购物车
+    url(r'^del_cart/$', views.delCart, name='del_cart'),
 ]
