@@ -25,4 +25,10 @@ urlpatterns = [
     url(r'^sub_goods/$', views.subGoods, name='sub_goods'),
     # 删除购物车
     url(r'^del_cart/$', views.delCart, name='del_cart'),
+    # 更改购物车商品状态
+    url(r'^change/$', views.change, name='change'),
+    # 计算总价
+    url(r'^get_price/$', views.getPrice, name='get_price'),
+    # 结算页面
+    url(r'^place_order/$', views.placeOrder, name='place_order')
 ]

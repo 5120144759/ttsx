@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse
 from django.core.urlresolvers import reverse
 
-from myApp.models import Goods, Category, MainWheel, MainNav, Cart
+from myApp.models import Goods, Category, MainWheel, MainNav, Cart, Order
 from user.models import UserAddress
 
 
@@ -146,6 +146,7 @@ def cart(request):
         carts_list = Cart.objects.filter(user=user)
         return render(request, 'ttsx/cart.html', {'carts_list': carts_list})
 
+
 def addGoods(request):
     if request.method == 'POST':
         ctx = {
@@ -178,6 +179,7 @@ def subGoods(request):
     ctx['price'] = cart.goods.price
     return JsonResponse(ctx)
 
+
 def delCart(request):
     if request.method == 'POST':
         ctx = {
@@ -189,3 +191,35 @@ def delCart(request):
         cart.delete()
         return JsonResponse(ctx)
 
+
+def change(request):
+    if request.method == 'POST':
+        id = request.POST.get('cart_id')
+        cart = Cart.objects.get(pk=id)
+        cart.is_select = not cart.is_select
+        cart.save()
+        return JsonResponse({'code': 200, 'is_select': cart.is_select})
+
+
+def getPrice(request):
+    if request.method == 'GET':
+        user = request.user
+        carts = Cart.objects.filter(user=user, is_select=True)
+        count_price = 0
+        for cart in carts:
+            count_price += cart.goods.price * cart.c_num
+        count_price = round(count_price, 3)
+        return JsonResponse({'count_price': count_price, 'code': 200})
+
+
+def placeOrder(request):
+    if request.method == 'GET':
+        user = request.user
+        add = UserAddress.objects.get(user=user)
+        carts_list = Cart.objects.filter(is_select=1)
+        o_num = 0
+        for cart in carts_list:
+            o_num += cart.c_num
+        ctx = {'user': user, 'add': add, 'carts_list': carts_list, 'o_num': o_num}
+        Order.objects.create(user=user, o_num=o_num, o_status=1)
+        return render(request, 'ttsx/place_order.html', ctx)

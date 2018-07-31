@@ -36,7 +36,12 @@
     {% csrf_token %}
     {% for cart in carts_list %}
         <ul class="cart_list_td clearfix" id="ul_{{ cart.id }}">
-            <li class="col01"><input type="checkbox" name="" checked></li>
+            {% if cart.is_select %}
+                <li class="col01"><input type="checkbox" id="check_{{ cart.id }}" onclick="change({{ cart.id }})"
+                                         checked></li>
+            {% else %}
+                <li class="col01"><input type="checkbox" id="check_{{ cart.id }}" onclick="change({{ cart.id }})"></li>
+            {% endif %}
             <li class="col02"><img src="/media/{{ cart.goods.icon }}"></li>
             <li class="col03">{{ cart.goods.name }}<br><em>{{ cart.goods.price }}元/{{ cart.goods.specifics }}</em></li>
             <li class="col04">{{ cart.goods.specifics }}</li>
@@ -59,7 +64,7 @@
     <ul class="settlements">
         <li class="col01"><input type="checkbox" name="" checked=""></li>
         <li class="col02">全选</li>
-        <li class="col03">合计(不含运费)：<span>¥</span><em>42.60</em><br>共计<b>2</b>件商品</li>
-        <li class="col04"><a href="place_order.html">去结算</a></li>
+        <li class="col03">合计(不含运费)：<span>¥</span><em id="get_price">42.60</em><br>共计<b>2</b>件商品</li>
+        <li class="col04"><a href="{% url 'ttsx:place_order' %}">去结算</a></li>
     </ul>
 {% endblock %}
