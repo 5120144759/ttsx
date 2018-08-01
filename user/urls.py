@@ -12,5 +12,7 @@ urlpatterns = [
     # 用户主页
     url(r'^mine/$', views.mine, name='mine'),
     # 收货地址
-    url(r'^address/$', views.address, name='address')
+    url(r'^address/$', views.address, name='address'),
+    # 全部订单
+    url(r'^all_order/$', views.allOrder, name='all_order'),
 ]

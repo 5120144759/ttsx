@@ -54,15 +54,15 @@
             <li class="col04">数量</li>
             <li class="col05">小计</li>
         </ul>
-        {% for cart in carts_list %}
+        {% for o_goods in order_goods_list %}
             <ul class="goods_list_td clearfix" id="ul_{{ cart.id }}">
                 <li class="col01">{{ forloop.counter }}</li>
-                <li class="col02"><img src="/media/{{ cart.goods.icon }}"></li>
-                <li class="col03">{{ cart.goods.name }}</li>
-                <li class="col04">{{ cart.goods.specifics }}</li>
-                <li class="col05"><em>{{ cart.goods.price }}</em>元</li>
-                <li class="col06"><em>{{ cart.c_num }}</em></li>
-                <li class="col07"><em id="subtotal_{{ cart.id }}">{% mul cart.c_num cart.goods.price %}</em>元</li>
+                <li class="col02"><img src="/media/{{ o_goods.goods.icon }}"></li>
+                <li class="col03">{{ o_goods.goods.name }}</li>
+                <li class="col04">{{ o_goods.goods.specifics }}</li>
+                <li class="col05"><em>{{ o_goods.goods.price }}</em>元</li>
+                <li class="col06"><em>{{ o_goods.goods_num }}</em></li>
+                <li class="col07"><em id="subtotal_{{ cart.id }}">{% mul o_goods.goods_num o_goods.goods.price %}</em>元</li>
             </ul>
         {% endfor %}
     </div>
@@ -71,11 +71,11 @@
 
     <div class="common_list_con clearfix">
         <div class="settle_con">
-            <div class="total_goods_count">共<em>{{ o_num }}</em>件商品，总金额<b><em id="get_price">42.60</em>元</b></div>
+            <div class="total_goods_count">共<em>{{ order.o_num }}</em>件商品，总金额<b><em>{{ money }}</em>元</b></div>
         </div>
     </div>
 
     <div class="order_submit clearfix">
-        <a href="javascript:;" id="order_btn">提交订单</a>
+        <a href="{% url 'ttsx:pay' %}?order_id={{ order.id }}" id="order_btn">提交订单</a>
     </div>
 {% endblock %}

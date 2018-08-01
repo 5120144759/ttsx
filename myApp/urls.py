@@ -29,6 +29,8 @@ urlpatterns = [
     url(r'^change/$', views.change, name='change'),
     # 计算总价
     url(r'^get_price/$', views.getPrice, name='get_price'),
-    # 结算页面
-    url(r'^place_order/$', views.placeOrder, name='place_order')
+    # 订单页面
+    url(r'^place_order/$', views.placeOrder, name='place_order'),
+    # 点击结算
+    url(r'^pay/$', views.pay, name='pay'),
 ]

@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse
 from django.core.urlresolvers import reverse
 
-from myApp.models import Goods, Category, MainWheel, MainNav, Cart, Order
+from myApp.models import Goods, Category, MainWheel, MainNav, Cart, Order, OrderGoodsModel
 from user.models import UserAddress
 
 
@@ -144,7 +144,10 @@ def cart(request):
     if request.method == 'GET':
         user = request.user
         carts_list = Cart.objects.filter(user=user)
-        return render(request, 'ttsx/cart.html', {'carts_list': carts_list})
+        num = 0
+        for cart in carts_list:
+            num += cart.c_num
+        return render(request, 'ttsx/cart.html', {'carts_list': carts_list, 'num': num})
 
 
 def addGoods(request):
@@ -206,8 +209,9 @@ def getPrice(request):
         user = request.user
         carts = Cart.objects.filter(user=user, is_select=True)
         count_price = 0
-        for cart in carts:
-            count_price += cart.goods.price * cart.c_num
+        if carts:
+            for cart in carts:
+                count_price += cart.goods.price * cart.c_num
         count_price = round(count_price, 3)
         return JsonResponse({'count_price': count_price, 'code': 200})
 
@@ -220,6 +224,18 @@ def placeOrder(request):
         o_num = 0
         for cart in carts_list:
             o_num += cart.c_num
-        ctx = {'user': user, 'add': add, 'carts_list': carts_list, 'o_num': o_num}
-        Order.objects.create(user=user, o_num=o_num, o_status=1)
+        if o_num == 0:
+            return HttpResponseRedirect(reverse('ttsx:index'))
+        order = Order(user=user, o_num=o_num, o_status=1)
+        order.save()
+        money = 0
+        for cart in carts_list:
+            OrderGoodsModel.objects.create(goods_id=cart.goods_id, goods_num=cart.c_num, order_id=order.id)
+            money += cart.c_num * cart.goods.price
+            cart.delete()
+        order_goods_list = OrderGoodsModel.objects.filter(order_id=order.id)
+        ctx = {'user': user, 'add': add, 'order_goods_list': order_goods_list, 'order': order, 'money': money}
         return render(request, 'ttsx/place_order.html', ctx)
+
+def pay(request):
+    pass

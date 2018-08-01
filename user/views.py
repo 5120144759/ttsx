@@ -81,3 +81,7 @@ def address(request):
         user_addr.tel = tel
         user_addr.save()
         return HttpResponseRedirect(reverse('user:mine'))
+
+def allOrder(request):
+    if request.method == 'GET':
+        return render(request, 'ttsx/user_center_order.html', )
