@@ -222,11 +222,13 @@ def placeOrder(request):
         add = UserAddress.objects.get(user=user)
         carts_list = Cart.objects.filter(is_select=1)
         o_num = 0
+        o_price = 0
         for cart in carts_list:
             o_num += cart.c_num
+            o_price += cart.c_num * cart.goods.price
         if o_num == 0:
             return HttpResponseRedirect(reverse('ttsx:index'))
-        order = Order(user=user, o_num=o_num, o_status=1)
+        order = Order(user=user, o_num=o_num, o_status=1, o_price=o_price)
         order.save()
         money = 0
         for cart in carts_list:
@@ -239,3 +241,4 @@ def placeOrder(request):
 
 def pay(request):
     pass
+

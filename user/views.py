@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
 
+from myApp.models import Order, OrderGoodsModel
 from user.models import User, UserTicket, UserAddress
 from utils.func import get_ticket
 
@@ -82,6 +83,9 @@ def address(request):
         user_addr.save()
         return HttpResponseRedirect(reverse('user:mine'))
 
+
 def allOrder(request):
     if request.method == 'GET':
-        return render(request, 'ttsx/user_center_order.html', )
+        user = request.user
+        order_list = Order.objects.filter(user=user).all()
+        return render(request, 'ttsx/user_center_order.html', {'order_list': order_list})

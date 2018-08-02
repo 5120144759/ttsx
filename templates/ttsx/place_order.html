@@ -71,11 +71,11 @@
 
     <div class="common_list_con clearfix">
         <div class="settle_con">
-            <div class="total_goods_count">共<em>{{ order.o_num }}</em>件商品，总金额<b><em>{{ money }}</em>元</b></div>
+            <div class="total_goods_count">共<em>{{ order.o_num }}</em>件商品，总金额<b><em>{{ order.o_price }}</em>元</b></div>
         </div>
     </div>
 
     <div class="order_submit clearfix">
-        <a href="{% url 'ttsx:pay' %}?order_id={{ order.id }}" id="order_btn">提交订单</a>
+        <a href="{% url 'ttsx:pay' %}?order_id={{ order.id }}" id="order_btn">付款</a>
     </div>
 {% endblock %}
