@@ -1,6 +1,7 @@
 import datetime
 
 from django.contrib.auth.hashers import make_password, check_password
+from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
@@ -88,4 +89,7 @@ def allOrder(request):
     if request.method == 'GET':
         user = request.user
         order_list = Order.objects.filter(user=user).all()
-        return render(request, 'ttsx/user_center_order.html', {'order_list': order_list})
+        num = request.GET.get('page_num', 1)
+        paginator = Paginator(order_list, 2)
+        page = paginator.page(num)
+        return render(request, 'ttsx/user_center_order.html', {'order_list': page})

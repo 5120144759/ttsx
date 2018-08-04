@@ -23,12 +23,12 @@
         <div class="right_content clearfix">
 
             <h3 class="common_title2">全部订单</h3>
-        {% for order in order_list %}
-            <ul class="order_list_th w978 clearfix">
-                <li class="col01">2016-8-21 17:36:24</li>
-                <li class="col02">订单号：56872934</li>
-                <li class="col02 stress">未支付</li>
-            </ul>
+            {% for order in order_list %}
+                <ul class="order_list_th w978 clearfix">
+                    <li class="col01">2016-8-21 17:36:24</li>
+                    <li class="col02">订单号：56872934</li>
+                    <li class="col02 stress">未支付</li>
+                </ul>
 
                 <table class="order_list_table w980">
                     <tbody>
@@ -52,13 +52,17 @@
             {% endfor %}
 
             <div class="pagenation">
-                <a href="#">上一页</a>
-                <a href="#" class="active">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">下一页></a>
+                <a href="{% url 'user:all_order' %}">首页</a>
+                {% if order_list.has_previous %}
+                    <a href="{% url 'user:all_order' %}?page_num={{ order_list.previous_page_number }}">上一页</a>
+                {% endif %}
+                {% for i in order_list.paginator.page_range %}
+                    <a href="{% url 'user:all_order' %}?page_num={{ i }}">{{ i }}</a>
+                {% endfor %}
+                {% if order_list.has_next %}
+                    <a href="{% url 'user:all_order' %}?page_num={{ order_list.next_page_number }}">下一页></a>
+                {% endif %}
+                <a href="{% url 'user:all_order' %}?page_num={{ order_list.paginator.num_pages }}">尾页</a>
             </div>
         </div>
     </div>
