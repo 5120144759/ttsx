@@ -46,6 +46,7 @@ def login(request):
             res = HttpResponseRedirect(reverse('ttsx:index'))
             res.set_cookie('ticket', ticket, expires=out_time)
             return res
+        return HttpResponseRedirect(reverse('user:login'))
 
 
 def logout(request):
@@ -65,9 +66,12 @@ def mine(request):
 def address(request):
     if request.method == 'GET':
         user = request.user
-        add = UserAddress.objects.get(user=user)
-        ctx = {'add': add}
-        return render(request, 'ttsx/user_center_site.html', ctx)
+        add = UserAddress.objects.filter(user=user).first()
+        if add:
+            ctx = {'add': add}
+            return render(request, 'ttsx/user_center_site.html', ctx)
+        else:
+            return render(request, 'ttsx/user_center_site.html', )
     if request.method == 'POST':
         name = request.POST.get('name')
         addr = request.POST.get('address')
@@ -78,10 +82,13 @@ def address(request):
             ctx = {'add': add, 'msg': '请填写所有字段'}
             return render(request, 'ttsx/user_center_site.html', ctx)
         user_addr = UserAddress.objects.filter(user=request.user).first()
-        user_addr.zcpde = name
-        user_addr.addr = addr
-        user_addr.tel = tel
-        user_addr.save()
+        if user_addr:
+            user_addr.zcpde = name
+            user_addr.addr = addr
+            user_addr.tel = tel
+            user_addr.save()
+        else:
+            UserAddress.objects.create(address=addr, tel=tel, zcpde=name, user=request.user)
         return HttpResponseRedirect(reverse('user:mine'))
 
 

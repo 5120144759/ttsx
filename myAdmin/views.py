@@ -7,7 +7,7 @@ from django.shortcuts import render
 from django.core.urlresolvers import reverse
 
 from user.models import User, UserTicket
-from myApp.models import Category, Goods
+from myApp.models import Category, Goods, Order, OrderGoodsModel
 from utils.func import get_ticket, wapper
 
 
@@ -125,3 +125,39 @@ def addCategoty(request):
         icon = request.FILES.get('icon')
         Category.objects.create(name=name, icon=icon)
         return HttpResponseRedirect(reverse('admin:addcategory'))
+
+
+@wapper
+def order_list(request):
+    if request.method == 'GET':
+        order_list = Order.objects.all()
+        num = request.GET.get('page_num', 1)
+        paginator = Paginator(order_list, 2)
+        page = paginator.page(num)
+        return render(request, 'admin/order_list.html', {'order_list': page})
+
+@wapper
+def order_detail(request):
+    if request.method == 'GET':
+        order_id = request.GET.get('order_id')
+        if order_id:
+            order_goods = OrderGoodsModel.objects.filter(order_id=order_id).all()
+            order = Order.objects.get(pk=order_id)
+            return render(request, 'admin/order_detail.html', {'order_goods': order_goods, 'order': order})
+        else:
+            return HttpResponseRedirect(reverse('admin:order_list'))
+
+
+@wapper
+def order_delete(request):
+    if request.method == 'GET':
+        order_id = request.GET.get('order_id')
+        if order_id:
+            order = Order.objects.get(pk=order_id)
+            order_goods = OrderGoodsModel.objects.filter(order_id=order_id).all()
+            for goods in order_goods:
+                goods.delete()
+            order.delete()
+            return HttpResponseRedirect(reverse('admin:order_list'))
+        else:
+            return HttpResponseRedirect(reverse('admin:order_list'))
