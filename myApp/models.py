@@ -1,11 +1,11 @@
 from django.db import models
 
-from user.models import User, UserAddress
+from user.models import User
 
 
 class Category(models.Model):
     name = models.CharField(max_length=50)  # 分类名称
-    icon = models.ImageField(upload_to='upload', null=True) # 分类图片
+    icon = models.ImageField(upload_to='upload', null=True)  # 分类图片
 
     class Meta():
         db_table = 'ttsx_category'
@@ -48,7 +48,7 @@ class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # 关联用户
     o_num = models.CharField(max_length=64)  # 订单号
     o_status = models.IntegerField(default=0)  # 状态
-    o_price = models.FloatField(default=0) # 订单总价格
+    o_price = models.FloatField(default=0)  # 订单总价格
 
     class Meta:
         db_table = 'ttsx_order'

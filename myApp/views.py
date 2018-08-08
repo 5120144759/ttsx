@@ -3,7 +3,8 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse
 from django.core.urlresolvers import reverse
 
-from myApp.models import Goods, Category, MainWheel, MainNav, Cart, Order, OrderGoodsModel
+from myApp.models import Goods, Category, MainWheel, MainNav, \
+    Cart, Order, OrderGoodsModel
 from user.models import UserAddress
 
 
@@ -22,7 +23,8 @@ def index(request):
         goods_list += list(goods_list1)
     w_list = MainWheel.objects.all()
     m_list = MainNav.objects.all()
-    ctx = {'goods_list': goods_list, 'c_list': c_list, 'w_list': w_list, 'm_list': m_list}
+    ctx = {'goods_list': goods_list, 'c_list': c_list,
+           'w_list': w_list, 'm_list': m_list}
     return render(request, 'ttsx/index.html', ctx)
 
 
@@ -60,7 +62,8 @@ def detail(request, gid, cid):
         goods = Goods.objects.get(pk=gid)
         goods_list = Goods.objects.filter(category_id=cid)
         c_list = Category.objects.all()
-        ctx = {'goods': goods, 'c_list': c_list, 'cid': int(cid), 'goods_list': goods_list}
+        ctx = {'goods': goods, 'c_list': c_list, 'cid': int(cid),
+               'goods_list': goods_list}
         return render(request, 'ttsx/detail.html', ctx)
 
 
@@ -74,7 +77,8 @@ def addCart(request):
         sum = 0
         goods_id = request.POST.get('goods_id')
         if user.id:
-            cart = Cart.objects.filter(goods_id=goods_id, user_id=user.id).first()
+            cart = Cart.objects.filter(goods_id=goods_id,
+                                       user_id=user.id).first()
             if cart:
                 cart.c_num += 1
                 cart.save()
@@ -119,7 +123,8 @@ def detailAddCart(request):
         goods_id = request.POST.get('goods_id')
         c_num = request.POST.get('num')
         if user.id:
-            cart = Cart.objects.filter(goods_id=goods_id, user_id=user.id).first()
+            cart = Cart.objects.filter(goods_id=goods_id,
+                                       user_id=user.id).first()
             if cart:
                 cart.c_num += int(c_num)
                 cart.save()
@@ -147,7 +152,8 @@ def cart(request):
         num = 0
         for cart in carts_list:
             num += cart.c_num
-        return render(request, 'ttsx/cart.html', {'carts_list': carts_list, 'num': num})
+        return render(request, 'ttsx/cart.html',
+                      {'carts_list': carts_list, 'num': num})
 
 
 def addGoods(request):
@@ -232,13 +238,22 @@ def placeOrder(request):
         order.save()
         money = 0
         for cart in carts_list:
-            OrderGoodsModel.objects.create(goods_id=cart.goods_id, goods_num=cart.c_num, order_id=order.id)
+            OrderGoodsModel.objects.create(goods_id=cart.goods_id,
+                                           goods_num=cart.c_num,
+                                           order_id=order.id)
             money += cart.c_num * cart.goods.price
             cart.delete()
         order_goods_list = OrderGoodsModel.objects.filter(order_id=order.id)
-        ctx = {'user': user, 'add': add, 'order_goods_list': order_goods_list, 'order': order, 'money': money}
+        ctx = {'user': user, 'add': add,
+               'order_goods_list': order_goods_list,
+               'order': order, 'money': money}
         return render(request, 'ttsx/place_order.html', ctx)
 
 def pay(request):
     pass
+
+
+def search(request):
+    if request.method == 'POST':
+        keyword = request.method.get('search')
 

@@ -33,4 +33,6 @@ urlpatterns = [
     url(r'^place_order/$', views.placeOrder, name='place_order'),
     # 点击结算
     url(r'^pay/$', views.pay, name='pay'),
+    # 搜索
+    url(r'^search/$', views.search, name='search'),
 ]
