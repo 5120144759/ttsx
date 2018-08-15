@@ -33,7 +33,7 @@
                 <span>|</span>
                 <a href="{% url 'ttsx:cart' %}">我的购物车</a>
                 <span>|</span>
-                <a href="user_center_order.html">我的订单</a>
+                <a href="{% url 'user:all_order' %}">我的订单</a>
             </div>
         </div>
     </div>
@@ -42,9 +42,10 @@
 <div class="search_bar clearfix">
     <a href="{% url 'ttsx:index' %}" class="logo fl"><img src="/static/user/images/logo.png"></a>
     <div class="search_con fl">
-        <form action="" method="post">
+        <form action="{% url 'ttsx:search' %}" method="post">
+            {% csrf_token %}
             <input type="text" class="input_text fl" name="search" placeholder="搜索商品">
-            <input type="button" class="input_btn fr" name="" value="搜索">
+            <input type="submit" class="input_btn fr" name="" value="搜索">
         </form>
     </div>
     <div class="guest_cart fr">

@@ -27,7 +27,11 @@
                 <ul class="order_list_th w978 clearfix">
                     <li class="col01">2016-8-21 17:36:24</li>
                     <li class="col02">订单号：56872934</li>
-                    <li class="col02 stress">未支付</li>
+                    {% if order.o_status == 1 %}
+                        <li class="col02 stress">未支付</li>
+                    {% else %}
+                        <li class="col02 stress">已支付</li>
+                    {% endif %}
                 </ul>
 
                 <table class="order_list_table w980">
@@ -44,8 +48,15 @@
                             {% endfor %}
                         </td>
                         <td width="15%">{{ order.o_price }}元</td>
-                        <td width="15%">待付款</td>
-                        <td width="15%"><a href="#" class="oper_btn">去付款</a></td>
+
+                        <td width="15%">
+                            {% if order.o_status == 1 %}
+                                <a href="{% url 'ttsx:my_order' %}?order_id={{ order.id }}"
+                                   class="oper_btn">去付款</a>
+                            {% else %}
+                                <a href="#" class="oper_btn">查看物流</a>
+                            {% endif %}
+                        </td>
                     </tr>
                     </tbody>
                 </table>

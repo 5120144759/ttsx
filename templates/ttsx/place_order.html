@@ -77,6 +77,6 @@
 
     <div class="order_submit clearfix">
 {#        <a href="{% url 'ttsx:pay' %}?order_id={{ order.id }}" id="order_btn">付款</a>#}
-        <a href="#" id="order_btn">付款</a>
+        <a href="{% url 'ttsx:pay' %}?order_id={{ order.id }}" id="order_btn">付款</a>
     </div>
 {% endblock %}

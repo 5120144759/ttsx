@@ -35,4 +35,6 @@ urlpatterns = [
     url(r'^pay/$', views.pay, name='pay'),
     # 搜索
     url(r'^search/$', views.search, name='search'),
+    # 去付款订单页面
+    url(r'my_order', views.my_order, name='my_order'),
 ]

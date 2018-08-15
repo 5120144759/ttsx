@@ -47,7 +47,7 @@ class MainNav(Main):
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # 关联用户
     o_num = models.CharField(max_length=64)  # 订单号
-    o_status = models.IntegerField(default=0)  # 状态
+    o_status = models.IntegerField(default=1)  # 状态
     o_price = models.FloatField(default=0)  # 订单总价格
 
     class Meta:

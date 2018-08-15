@@ -2,6 +2,7 @@ from django.core.paginator import Paginator
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse
 from django.core.urlresolvers import reverse
+from django.db.models import Q
 
 from myApp.models import Goods, Category, MainWheel, MainNav, \
     Cart, Order, OrderGoodsModel
@@ -236,24 +237,47 @@ def placeOrder(request):
             return HttpResponseRedirect(reverse('ttsx:index'))
         order = Order(user=user, o_num=o_num, o_status=1, o_price=o_price)
         order.save()
-        money = 0
         for cart in carts_list:
             OrderGoodsModel.objects.create(goods_id=cart.goods_id,
                                            goods_num=cart.c_num,
                                            order_id=order.id)
-            money += cart.c_num * cart.goods.price
             cart.delete()
         order_goods_list = OrderGoodsModel.objects.filter(order_id=order.id)
         ctx = {'user': user, 'add': add,
                'order_goods_list': order_goods_list,
-               'order': order, 'money': money}
+               'order': order}
         return render(request, 'ttsx/place_order.html', ctx)
 
 def pay(request):
-    pass
+    order_id = request.GET.get('order_id')
+    order = Order.objects.get(pk=order_id)
+    order.o_status = 2
+    return HttpResponseRedirect(reverse('user:all_order'))
 
 
 def search(request):
     if request.method == 'POST':
-        keyword = request.method.get('search')
+        keyword = request.POST.get('search')
+        if keyword:
+            goods_list = Goods.objects.filter(Q(name__icontains=keyword)).all()
+            num = request.GET.get('page_num', 1)
+            paginator = Paginator(goods_list, 20)
+            page = paginator.page(num)
+            ctx = {
+                'cid': 0,
+                'gid': 0,
+                'goods_list': page
+            }
+            return render(request, 'ttsx/list.html', ctx)
 
+def my_order(request):
+    if request.method == 'GET':
+        order_id = request.GET.get('order_id')
+        user = request.user
+        add = UserAddress.objects.get(user=user)
+        order_goods_list = OrderGoodsModel.objects.filter(order_id=order_id)
+        order = Order.objects.get(pk=order_id)
+        ctx = {'user': user, 'add': add,
+               'order_goods_list': order_goods_list,
+               'order': order}
+        return render(request, 'ttsx/place_order.html', ctx)

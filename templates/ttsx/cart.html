@@ -57,8 +57,9 @@
             <li class="col07"><em id="subtotal_{{ cart.id }}">{% mul cart.c_num cart.goods.price %}</em>元</li>
             <li class="col08"><a href="javascript: del_cart({{ cart.id }});">删除</a></li>
         </ul>
+    {% empty %}
+        <p style="font-size: 50px; margin-left: 450px">你的购物车空空如也</p>
     {% endfor %}
-
 
 
     <ul class="settlements">
